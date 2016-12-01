@@ -1,18 +1,35 @@
 package List;
 
-public class LinkedList extends List {
+public class LinkedList<T> extends List {
 
     public LinkedList() {
         super();
     }
 
-    public int find(Object otro) {
-        Node x = new Node(otro);
+    public boolean contains(T otro) {
+        Node<T> x = new Node<>(otro);
+        if (isEmpty()) {
+            return false;
+        }
+        int iter = 0;
+        Node<T> temp = head;
+        while (iter < size) {
+            if (temp.equals(x)) {
+                return true;
+            }
+            temp = temp.getNext();
+            iter++;
+        }
+        return false;
+    }
+
+    public int find(T otro) {
+        Node<T> x = new Node<>(otro);
         if (isEmpty()) {
             return -1;
         }
         int iter = 0;
-        Node temp = head;
+        Node<T> temp = head;
         while (iter < size) {
             if (temp.equals(x)) {
                 return iter;
@@ -23,23 +40,23 @@ public class LinkedList extends List {
         return -1;
     }
 
-    public void Replace(Object val, int pos) {
-        Node tmp = new Node(val);
+    public void Replace(T val, int pos) {
+        Node<T> tmp = new Node<>(val);
         if (isEmpty() && pos == 0) {
             head = tmp;
             tail = tmp;
         } else if (pos == 0) {
-            Node temp = new Node(val);
+            Node<T> temp = new Node<T>(val);
             temp.setNext(head.getNext());
             head = temp;
         } else {
             int iter = 0;
-            Node temp = head;
+            Node<T> temp = head;
             while (iter < pos - 1) {
                 temp = temp.getNext();
                 iter++;
             }
-            Node neu = tmp;
+            Node<T> neu = tmp;
             neu.setNext(temp.getNext());
             temp = neu;
             if (pos == size) {
@@ -48,14 +65,14 @@ public class LinkedList extends List {
         }
     }
 
-    public LinkedList concat(LinkedList other) {
+    public LinkedList concat(LinkedList<T> other) {
         if (other.isEmpty()) {
             return other;
         } else if (isEmpty()) {
             return this;
         }
-        LinkedList neo = new LinkedList();
-        Node temp = head;
+        LinkedList<T> neo = new LinkedList<>();
+        Node<T> temp = head;
         int iter = 0;
         while (iter < size) {
             neo.insert(temp, iter);
@@ -84,22 +101,22 @@ public class LinkedList extends List {
 
     @Override
     public void insert(Object val, int pos) {
-        Node tmp = new Node(val);
+        Node<T> tmp = new Node(val);
         if (isEmpty() && pos == 0) {
             head = tmp;
             tail = tmp;
         } else if (pos == 0) {
-            Node temp = new Node(val);
+            Node<T> temp = new Node(val);
             temp.setNext(head);
             head = temp;
         } else {
             int iter = 0;
-            Node temp = head;
+            Node<T> temp = head;
             while (iter < pos - 1) {
                 temp = temp.getNext();
                 iter++;
             }
-            Node neu = tmp;
+            Node<T> neu = tmp;
             neu.setNext(temp.getNext());
             temp.setNext(neu);
             if (pos == size) {
@@ -128,16 +145,16 @@ public class LinkedList extends List {
         }
     }
 
-    public Object getHead() {
-        return head.getVal();
+    public T getHead() {
+        return (T) head.getVal();
     }
 
-    public Object getTail() {
-        return tail.getVal();
+    public T getTail() {
+        return (T) tail.getVal();
     }
 
     @Override
-    public Object get(int pos) {
+    public T get(int pos) {
         if (isEmpty()) {
             return null;
         }
@@ -147,6 +164,6 @@ public class LinkedList extends List {
             target = target.getNext();
             iter++;
         }
-        return target.getVal();
+        return (T) target.getVal();
     }
 }

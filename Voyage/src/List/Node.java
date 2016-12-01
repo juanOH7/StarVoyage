@@ -1,18 +1,18 @@
 package List;
 
-public class Node {
-    private Object val;
+public class Node <T> {
+    private T val;
     private Node next;
 
-    public Node(Object val) {
+    public Node(T val) {
         this.val = val;
     }
     
-    public Object getVal() {
+    public T getVal() {
         return val;
     }
 
-    public void setVal(Object val) {
+    public void setVal(T val) {
         this.val = val;
     }
 

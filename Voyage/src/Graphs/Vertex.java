@@ -2,12 +2,17 @@ package Graphs;
 
 import List.LinkedList;
 import java.util.Objects;
-import voyage.Const;
 
-public class Vertex {
-    private LinkedList adjacents = new LinkedList();
-    private Const value;
+public class Vertex <T>{
+    private LinkedList<Adjacents<T>> adjacents = new LinkedList();
+    private T value;
 
+    public Vertex(T value) {
+        this.value = value;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -5,6 +5,8 @@
  */
 package voyage;
 
+import List.LinkedList;
+
 /**
  *
  * @author Juan O'Hara
@@ -16,6 +18,13 @@ public class Voyage {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        LinkedList<C> as = new LinkedList();
+        as.add("sd dd");
+        LinkedList<Integer> sd = new LinkedList();
+        sd.add(2);
+        String a = as.get(0);
+        int s = sd.get(0);
+        System.out.println(a);
     }
     
 }

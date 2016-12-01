@@ -9,7 +9,7 @@ package List;
  *
  * @author Juan O'Hara
  */
-public abstract class List {
+public abstract class List<T> {
 
     protected Node head;
     protected int size;
@@ -29,11 +29,11 @@ public abstract class List {
         return size == 0;
     }
 
-    abstract public void add(Object val);
+    abstract public void add(T val);
 
-    abstract public Object get(int pos);
+    abstract public T get(int pos);
 
-    abstract public void insert(Object val, int pos);
+    abstract public void insert(T val, int pos);
 
     abstract public void delete(int pos);
 }

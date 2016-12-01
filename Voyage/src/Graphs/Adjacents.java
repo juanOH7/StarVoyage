@@ -1,23 +1,22 @@
 package Graphs;
 
 import java.util.Objects;
-import voyage.Const;
 
-public class Adjacents {
-    private Const Val;
+public class Adjacents <T> {
+    private T Val;
     private int weight;
 
-    public Adjacents(Const Val, int weight) {
+    public Adjacents(T Val, int weight) {
         this.Val = Val;
         this.weight = weight;
     }
 
-    public Adjacents(Const Val) {
+    public Adjacents(T Val) {
         this.Val = Val;
         this.weight = 1;
     }
     
-    public Const val() {
+    public T val() {
         return Val;
     }
 
@@ -25,7 +24,7 @@ public class Adjacents {
         return weight;
     }
     
-    public void set(Const Val) {
+    public void set(T Val) {
         this.Val = Val;
     }
 
