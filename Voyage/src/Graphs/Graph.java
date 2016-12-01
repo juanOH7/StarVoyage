@@ -10,6 +10,10 @@ public class Graph<T> {
         Vertices.add(temp);
     }
     
+    public T getVertex(int d){
+        return (T) Vertices.get(0).retVal();
+    }
+    
     public void addEdge(Vertex<T> A, Vertex<T> B, int weight){
         
     }

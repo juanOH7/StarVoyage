@@ -10,8 +10,10 @@ public class Vertex <T>{
     public Vertex(T value) {
         this.value = value;
     }
-
     
+    public T retVal(){
+        return value;
+    }
     
     @Override
     public int hashCode() {

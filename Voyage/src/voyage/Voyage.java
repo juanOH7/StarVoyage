@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package voyage;
 
+import Graphs.Graph;
+import Graphs.Vertex;
 import List.LinkedList;
 
-/**
- *
- * @author Juan O'Hara
- */
 public class Voyage {
 
     /**
@@ -18,13 +11,11 @@ public class Voyage {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LinkedList<String> as = new LinkedList();
-        as.add("sd dd");
-        LinkedList<Integer> sd = new LinkedList();
-        sd.add(2);
-        String a = as.get(0);
-        int s = sd.get(0);
-        System.out.println(a);
+        Graph<Const> df = new Graph();
+        df.addV(new Const("d"));
+        System.out.println(df.getVertex(0));
+        Const d = df.getVertex(0);
+        System.out.println(d);
     }
     
 }

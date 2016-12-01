@@ -6,7 +6,8 @@ import java.util.Objects;
 public class Const {
     private Graph Stars = new Graph();
     private String Name;
-    public Const() {
+    public Const(String name) {
+        this.Name = name;
     }
 
     @Override
@@ -33,6 +34,11 @@ public class Const {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Const{" + "Name=" + Name + '}';
     }
     
     
