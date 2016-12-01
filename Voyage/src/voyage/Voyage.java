@@ -18,7 +18,7 @@ public class Voyage {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LinkedList<C> as = new LinkedList();
+        LinkedList<String> as = new LinkedList();
         as.add("sd dd");
         LinkedList<Integer> sd = new LinkedList();
         sd.add(2);
