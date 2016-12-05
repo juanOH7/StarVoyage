@@ -40,7 +40,7 @@ public class Star {
 
     @Override
     public String toString() {
-        return "Star " + name + " ";
+        return " " + name + " ";
     }
     
     

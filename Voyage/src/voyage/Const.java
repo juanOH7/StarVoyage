@@ -1,14 +1,30 @@
 package voyage;
 
 import Graphs.Graph;
+import List.LinkedList;
 import java.util.Objects;
 
 public class Const {
-    private Graph Stars = new Graph();
+
+    private Graph<Star> Stars = new Graph<>();
     private String Name;
+
     public Const(String name) {
         this.Name = name;
     }
+
+    public boolean addStar(Star val) {
+        if (!Stars.contains(val)) {
+            Stars.addV(val);
+            return true;
+        }
+        return false;
+    }
+
+    public LinkedList getStars() {
+        return Stars.getVertices();
+    }
+
 
     @Override
     public int hashCode() {
@@ -38,8 +54,7 @@ public class Const {
 
     @Override
     public String toString() {
-        return "Const{" + "Name=" + Name + '}';
+        return Name;
     }
-    
-    
+
 }

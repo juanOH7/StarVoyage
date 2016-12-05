@@ -3,24 +3,47 @@ package Graphs;
 import List.LinkedList;
 import java.util.Objects;
 
-public class Vertex <T>{
-    private LinkedList<Adjacents<T>> adjacents = new LinkedList();
+public class Vertex<T> {
+
+    private LinkedList<Adjacents<Vertex<T>>> adjacents = new LinkedList();
     private T value;
 
     public Vertex(T value) {
         this.value = value;
     }
+
+    public LinkedList<Adjacents<Vertex<T>>> getAdjacents() {
+        return adjacents;
+    }
+
     
-    public T retVal(){
+    
+    public void addEdge(Vertex val, int weight) {
+        adjacents.add(new Adjacents<>(val, weight));
+    }
+
+    public T retVal() {
         return value;
     }
-    
+
+    public boolean hasAdj(Vertex val) {
+        if (adjacents.isEmpty()) {
+            return false;
+        }
+        return adjacents.contains(new Adjacents<>(val));
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 11 * hash + Objects.hashCode(this.adjacents);
         hash = 11 * hash + Objects.hashCode(this.value);
         return hash;
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 
     @Override
@@ -40,6 +63,5 @@ public class Vertex <T>{
         }
         return true;
     }
-    
-    
+
 }

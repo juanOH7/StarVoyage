@@ -88,6 +88,22 @@ public class LinkedList<T> extends List {
     }
 
     @Override
+    public String toString() {
+        StringBuilder d = new StringBuilder();
+        Node init = head;
+        d.append(init.getVal());
+        d.append("; ");
+        for (int i = 0; i < size - 1; i++) {
+            init = init.getNext();
+            d.append(init.getVal());
+            if (i != size - 2) {
+                d.append("; ");
+            }
+        }
+        return "{"+ " " + d.toString() + " " + '}';
+    }
+
+    @Override
     public void add(Object val) {
         Node tmp = new Node(val);
         if (isEmpty()) {
