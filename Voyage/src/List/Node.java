@@ -2,12 +2,15 @@ package List;
 
 import java.util.Objects;
 
-public class Node <T> {
+public class Node<T> {
+
     private T val;
     private Node next;
+    private boolean visited;
 
     public Node(T val) {
         this.val = val;
+        this.visited = true;
     }
 
     @Override
@@ -16,6 +19,10 @@ public class Node <T> {
         hash = 47 * hash + Objects.hashCode(this.val);
         hash = 47 * hash + Objects.hashCode(this.next);
         return hash;
+    }
+
+    public boolean isVisited() {
+        return visited;
     }
 
     @Override
@@ -35,9 +42,7 @@ public class Node <T> {
         }
         return true;
     }
-    
-    
-    
+
     public T getVal() {
         return val;
     }
@@ -58,6 +63,5 @@ public class Node <T> {
     public String toString() {
         return "Node{" + "val=" + val + '}';
     }
-    
-    
+
 }

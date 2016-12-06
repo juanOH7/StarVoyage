@@ -16,10 +16,36 @@ public class Vertex<T> {
         return adjacents;
     }
 
-    
-    
+    public Vertex retAdjVertex(int pos) {
+        if (pos > adjacents.getSize() - 1) {
+            return null;
+        }
+        return adjacents.get(pos).val();
+    }
+
+    public Adjacents retAdj(int pos) {
+        if (pos > adjacents.getSize() - 1) {
+            return null;
+        }
+        return adjacents.get(pos);
+    }
+
+    public int getWeight(int pos) {
+        if (pos > adjacents.getSize() - 1) {
+            return -1;
+        }
+        return adjacents.get(pos).weight();
+    }
+
     public void addEdge(Vertex val, int weight) {
         adjacents.add(new Adjacents<>(val, weight));
+    }
+    
+    public int posAdj(Vertex val){
+        if (adjacents.isEmpty()) {
+            return -1;
+        }
+        return adjacents.find(new Adjacents<>(val));
     }
 
     public T retVal() {

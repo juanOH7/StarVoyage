@@ -11,6 +11,9 @@ public class LinkedList<T> extends List {
         if (isEmpty()) {
             return false;
         }
+        if (otro == null) {
+            return false;
+        }
         int iter = 0;
         Node<T> temp = head;
         while (iter < size) {
@@ -90,17 +93,19 @@ public class LinkedList<T> extends List {
     @Override
     public String toString() {
         StringBuilder d = new StringBuilder();
-        Node init = head;
-        d.append(init.getVal());
-        d.append("; ");
-        for (int i = 0; i < size - 1; i++) {
-            init = init.getNext();
+        if (head != null) {
+            Node init = head;
             d.append(init.getVal());
-            if (i != size - 2) {
-                d.append("; ");
+            d.append("; ");
+            for (int i = 0; i < size - 1; i++) {
+                init = init.getNext();
+                d.append(init.getVal());
+                if (i != size - 2) {
+                    d.append("; ");
+                }
             }
         }
-        return "{"+ " " + d.toString() + " " + '}';
+        return "{" + " " + d.toString() + " " + '}';
     }
 
     @Override
