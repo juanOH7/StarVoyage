@@ -30,8 +30,13 @@ public class Voyage {
         for (int i = 0; i < df.getSize(); i++) {
             System.out.println(df.print(i));
         }
+        Simulation s = new Simulation();
+        s.setVisible(true);
+        df.Prim();
 
-        df.Dijkstra(b, a);
-    }
+        System.out.println("Dijkstra " +df.Dijkstra(b, a));
+}
+    
+
 
 }

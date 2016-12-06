@@ -5,11 +5,27 @@ import java.util.Objects;
 public class Adjacents <T> {
     private T Val;
     private int weight;
-
+    private boolean visitado =false;
     public Adjacents(T Val, int weight) {
         this.Val = Val;
         this.weight = weight;
     }
+
+    public Adjacents(T Val, int weight, boolean visitado) {
+        this.Val = Val;
+        this.weight = weight;
+        this.visitado = visitado;
+    }
+
+    public boolean isVisitado() {
+        return visitado;
+    }
+
+    public void setVisitado(boolean visitado) {
+        this.visitado = visitado;
+    }
+    
+    
 
     public Adjacents(T Val) {
         this.Val = Val;

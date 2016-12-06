@@ -134,7 +134,7 @@ public class Graph<T> {
         return Vertices;
     }
 
-    public LinkedList Dijkstra(Vertex A, Vertex B) {
+      public LinkedList Dijkstra(Vertex A, Vertex B) {
         int Origin = Vertices.find(A);
         int Target = Vertices.find(B);
         int[] D = new int[Vertices.getSize()];
@@ -166,35 +166,13 @@ public class Graph<T> {
                 }
             }
         }
-        for (int i = 0; i < D.length; i++) {
-            System.out.print(visitado[i] + ",");
-        }
-        System.out.println("");
-        System.out.println("--------------");
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-
-            }
-        }
-        System.out.println(Vertices);
-        for (int i = 0; i < D.length; i++) {
-            System.out.print(D[i] + ",");
-        }
-        System.out.println("");
-        System.out.println("-----------");
         Camino.add(new Adjacents<>(Vertices.get(Origin), D[Origin]));
         for (int i = 0; i < D.length - 1; i++) {
             pos = min(D, visitado);
-            System.out.println("pos: " + pos);
             int tem = O.find(Vertices.get(pos));
             S.add(O.get(tem));
             O.delete(tem);
-            System.out.println("S-" + S);
-            System.out.println("O-" + O);
             for (int j = 0; j < O.getSize(); j++) {
-                System.out.println("D[POS]" + D[pos]);
-                System.out.println("Costo: " + costo(Vertices.get(pos), Vertices.get(j)));
-                System.out.println("Suma" + (D[pos] + costo(Vertices.get(pos), Vertices.get(j))));
                 int temp = D[j];
                 D[j] = min(D[j], D[pos] + costo(Vertices.get(pos), Vertices.get(j)));
                 if (j == Target && D[j] < temp) {
@@ -204,23 +182,57 @@ public class Graph<T> {
         }
         int tempd = B.posAdj(A);
         Camino.add(new Adjacents<>(Vertices.get(Target), B.getWeight(tempd)));
-        System.out.println("-----");
-        for (int i = 0; i < D.length; i++) {
-            System.out.print(visitado[i] + ",");
+        return Camino;
+    }
+    //Prim
+
+    public LinkedList Prim() {
+        
+        LinkedList<Vertex<T>> S = new LinkedList<>();
+        S= Vertices;
+        LinkedList<Vertex<T>> O = new LinkedList<>();
+        LinkedList<Adjacents<T>> Camino = new LinkedList<>();
+
+        for (int i = 0; i < Vertices.getSize(); i++) {
+            int tam =0;
+            tam = Vertices.get(i).getWeight(0);
+            System.out.println(Vertices.get(i).getWeight(0));
+            for (int j = 0; j < Vertices.get(i).getAdjacents().getSize(); j++) {
+                System.out.print("Vertice2 " + Vertices.get(i));
+                System.out.print("," + Vertices.get(i).getAdjacents().get(j));
+                System.out.println("," + Vertices.get(i).getWeight(j));
+                String temp = ""+Vertices.get(i)+Vertices.get(i).getAdjacents().get(j);
+                String temporal =""+temp.charAt(0)+temp.charAt(2);
+                String dadoVuelta =""+temp.charAt(2)+temp.charAt(0);
+                if (Vertices.get(i).getWeight(j) < tam &&(tam>=0)&&(Vertices.get(i).getAdjacents().get(j).isVisitado()==false)) {
+                    tam =Vertices.get(i).getWeight(j);
+                //    System.out.println("lol "+tam);
+                    Vertices.get(i).getAdjacents().get(j).isVisitado();
+                    System.out.println("Vertice menor "+tam);
+                    Vertices.get(i).getAdjacents().get(j).setVisitado(true);
+                    System.out.println(Vertices.get(i).getAdjacents().get(j).isVisitado());
+                    Camino.add(Vertices.get(i).getAdjacents().get(j));
+                    for (int k = 0; k < S.getSize(); k++) {
+                        
+                        for (int l = 0; l < S.get(k).getAdjacents().getSize(); l++) {
+                            temp = ""+Vertices.get(k)+Vertices.get(k).getAdjacents().get(l);
+                            temporal =""+temp.charAt(0)+temp.charAt(2);
+                           // System.out.println("vertices 3"+Vertices.get(k)+S.get(k).getAdjacents().get(l));
+                           // System.out.println("temporal "+ temporal);
+                           // System.out.println("dado Vuelta "+dadoVuelta);
+                            if (temporal.equals(dadoVuelta)) {
+                                System.out.println("hola");
+                                Vertices.get(k).getAdjacents().get(l).setVisitado(true);
+                              
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
         }
-        System.out.println("");
-        System.out.println("--------------");
-        System.out.println("Dista");
-        for (int i = 0; i < D.length; i++) {
-            System.out.println(D[i]);
-        }
-        System.out.println("-----");
-        System.out.println("Camino");
-        System.out.println(Camino);
-        System.out.println("-----");
-        for (int i = 0; i < D.length; i++) {
-            System.out.println(costo(A, Vertices.get(i)));
-        }
+
         return Camino;
     }
 
